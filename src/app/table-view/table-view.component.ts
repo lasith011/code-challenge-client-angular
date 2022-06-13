@@ -27,8 +27,6 @@ export class TableViewComponent implements OnInit {
   ];
 
   data: Temperature[] = [];
-  isLoading = true;
-
 
   constructor(private temperatureService: TemperatureService) {
   }
@@ -38,11 +36,18 @@ export class TableViewComponent implements OnInit {
   }
 
   reLoad(): void {
-    this.isLoading = true;
     this.temperatureService.findAllTemperatures().subscribe((data) => {
       this.data = data;
-      this.isLoading = false;
     });
+  }
 
+  showStatus(min: number, max: number, value: number): string {
+    let massage = 'OK';
+    if (value < min) {
+      massage = 'Too Low';
+    } else if (value > max) {
+      massage = 'Too High';
+    }
+    return massage;
   }
 }
