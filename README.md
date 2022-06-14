@@ -14,3 +14,4 @@ Please refer to the provided document for the code challenge requirements.
 ## TODO
 * Application architecture can be further improved
 * Improve responsiveness of the application
+* Improve application appearance
