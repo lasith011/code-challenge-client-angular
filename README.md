@@ -4,6 +4,14 @@ Please refer to the provided document for the code challenge requirements.
 
 ## Available scripts
 
-- `npm start` - Start the application (Port 4200)
-- `npm test` - Runs available tests
+- ` ng test --no-watch --code-coverage` - Runs available tests and to see the coverage
+- `ng serve --proxy-config proxy.conf.json` - Start the application (Port 4200) this will automatically patch api requests to the backend
 
+## Improvement
+* Improve application test coverage
+* Improve application UI using bootstrap
+
+## TODO
+* Application architecture can be further improved
+* Improve responsiveness of the application
+* Improve application appearance

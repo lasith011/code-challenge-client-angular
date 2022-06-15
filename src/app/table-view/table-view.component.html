@@ -1,0 +1,40 @@
+<div class="row py-1">
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-info" (click)="reLoad()">
+      Re-Load
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <table class="table table-striped table-responsive" id="beer-temp-table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Beer Type</th>
+        <th scope="col">Min Temp (&#8451;)</th>
+        <th scope="col">Max Temp (&#8451;)</th>
+        <th scope="col">Current Temp (&#8451;)</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{ item.id }}</td>
+        <td>{{ TEMP_DATA[item.id].beerType }}</td>
+        <td>{{ TEMP_DATA[item.id].minTem }}</td>
+        <td>{{ TEMP_DATA[item.id].maxTemp }}</td>
+        <td>{{ item.temperature }}</td>
+        <td>
+          {{
+            showStatus(
+              TEMP_DATA[item.id].minTem,
+              TEMP_DATA[item.id].maxTemp,
+              item.temperature
+            )
+          }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
