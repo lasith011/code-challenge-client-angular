@@ -1,14 +1,13 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TableViewComponent } from './table-view.component';
-import { TemperatureService } from '../services/temperature.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { HttpClientModule } from '@angular/common/http';
-import { of } from 'rxjs';
-import { Temperature } from '../model/temperature';
+import {TableViewComponent} from './table-view.component';
+import {TemperatureService} from '../services/temperature.service';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {HttpClientModule} from '@angular/common/http';
+import {of} from 'rxjs';
+import {Temperature} from '../model/temperature';
 
 describe('TableViewComponent', () => {
-
   let fixture: ComponentFixture<any>;
   let tableComponent: any;
   let temperatureService: TemperatureService;
@@ -18,34 +17,30 @@ describe('TableViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule
-      ],
-      declarations: [
-        TableViewComponent
-      ],
-      providers: [
-        HttpClientModule,
-        TemperatureService
-      ]
+      imports: [HttpClientTestingModule],
+      declarations: [TableViewComponent],
+      providers: [HttpClientModule, TemperatureService],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TableViewComponent);
     tableComponent = fixture.componentInstance;
     temperatureService = TestBed.inject(TemperatureService);
-    mockTemperatureService = fixture.debugElement.injector.get(TemperatureService);
+    mockTemperatureService =
+      fixture.debugElement.injector.get(TemperatureService);
     spyComponentLoadData = spyOn(tableComponent, 'reLoad');
-    spyTemperatureService = spyOn(temperatureService, 'findAllTemperatures').and.returnValue(of([
-      new Temperature(1, 1),
-      new Temperature(1, 2),
-    ]));
+    spyTemperatureService = spyOn(
+        temperatureService,
+        'findAllTemperatures',
+    ).and.returnValue(of([new Temperature(1, 1), new Temperature(1, 2)]));
   });
 
   it('should create', () => {
     expect(tableComponent).toBeTruthy();
   });
   it('should show Beer Temperature table', () => {
-    expect(fixture.nativeElement.querySelector('#beer-temp-table')).toBeTruthy();
+    expect(
+        fixture.nativeElement.querySelector('#beer-temp-table'),
+    ).toBeTruthy();
   });
 
   describe('#reLoad', () => {
@@ -73,4 +68,3 @@ describe('TableViewComponent', () => {
     });
   });
 });
-

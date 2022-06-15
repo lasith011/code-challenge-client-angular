@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { TemperatureService } from '../services/temperature.service';
-import { Temperature } from '../model/temperature';
+import {Component, OnInit} from '@angular/core';
+import {TemperatureService} from '../services/temperature.service';
+import {Temperature} from '../model/temperature';
 
 export interface BeerElement {
   id: number;
@@ -12,10 +12,9 @@ export interface BeerElement {
 @Component({
   selector: 'app-table-view',
   templateUrl: './table-view.component.html',
-  styleUrls: ['./table-view.component.scss']
+  styleUrls: ['./table-view.component.scss'],
 })
 export class TableViewComponent implements OnInit {
-
   TEMP_DATA: BeerElement[] = [
     {id: 0, beerType: '', minTem: 4, maxTemp: 6},
     {id: 1, beerType: 'Pilsner', minTem: 4, maxTemp: 6},
@@ -28,8 +27,7 @@ export class TableViewComponent implements OnInit {
 
   data: Temperature[] = [];
 
-  constructor(private temperatureService: TemperatureService) {
-  }
+  constructor(private temperatureService: TemperatureService) {}
 
   ngOnInit(): void {
     this.reLoad();
